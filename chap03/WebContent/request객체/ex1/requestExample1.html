@@ -1,0 +1,49 @@
+<html>
+<head><title>request객체 연습</title>
+	<script>
+	function check(){
+		if(document.myform.name.value == ""){
+			alert("이름을 입력하세요");
+			document.myform.name.focus();
+			return false;
+		}
+		if(document.myform.studentNum.value == ""){
+			alert("학번을 입력하세요");
+			document.myform.studentNum.focus();
+			return false;
+		}		
+		if(document.myform.gender[0].checked != true && document.myform.gender[1].checked != true){
+			alert("성별을 선택하세요!!");
+			return false;
+		}		
+		if(document.myform.major[0].selected == true ){	
+//		if(document.myform.major.options[0].selected == true ){	
+			alert("학과를 선택하세요!!");
+			return false;
+		}
+
+	}
+	</script>
+</head>
+<body onload="document.myform.name.focus()">
+<h1>Request 예제1</h1>
+
+<form name=myform method=post action="requestExample1.jsp" onSubmit="return check()">
+ 이름 : <input type="text" name="name"><br>
+ 학번 : <input type="text" name="studentNum"><br>
+ 성별 : 남자 <input  type="radio" name="gender"  value="m">
+        여자 <input type="radio" name="gender" value="f"><br>
+ 전공 : <select name="major">
+			<option value="#" selected>전공을 선택하세요</option>
+			<option selected value="컴퓨터공학">컴퓨터공학</option>
+			<option value="영문학과">영문학과</option>
+			<option value="수학과">수학과</option>
+			<option value="정치학과">정치학과</option>
+			<option value="산업디자인과">산업디자인과</option>
+		</select><br>
+<input type="submit" value="보내기">
+<input type="reset" value="취소">
+</form>
+
+</body>
+</html>
