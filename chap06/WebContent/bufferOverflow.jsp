@@ -1,5 +1,5 @@
 <%@ page contentType = "text/html; charset=utf-8" %>
-<%@ page buffer="1kb" %>
+<%@ page buffer="10kb" %>
 <%@ page errorPage = "/error/viewErrorMessage.jsp" %>
 <html>
 <head><title>버퍼 플러시 이후 에러 발생 결과</title></head>
