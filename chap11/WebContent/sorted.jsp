@@ -17,6 +17,6 @@ ${ vals = [20, 17, 30, 2, 9, 23] ;
 %>
 ${ sortedMem = members.stream().sorted((m1, m2) -> m1.age.compareTo(m2.age)).toList() ; ''}
 
-${ sortedMem }
+${ sortedMem.stream().map(e -> e.name).toList() }
 </body>
 </html>
