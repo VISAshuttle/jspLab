@@ -17,35 +17,34 @@
 	Class.forName("com.mysql.jdbc.Driver");
 	
 	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
+	Statement state = null;
+	ResultSet result = null;
 	
 	try {
 		String jdbcDriver = "jdbc:mysql://localhost:3306/chap14?" +
 							"useUnicode=true&characterEncoding=utf8";
 		String dbUser = "jspexam";
 		String dbPass = "jsppw";
-		String query = 
-		   "select * from MEMBER where MEMBERID = '"+memberID+"'";
+		String query = "select * from MEMBER where MEMBERID = '" + memberID + "'";
 		
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-		stmt = conn.createStatement();
+		state = conn.createStatement();
 		
-		rs = stmt.executeQuery(query);
-		if( rs.next() ) {
+		result = state.executeQuery(query);
+		if( result.next() ) {
 %>
 <table border="1">
 <tr>
 	<td>아이디</td><td><%= memberID %></td>
 </tr>
 <tr>
-	<td>암호</td><td><%= rs.getString("PASSWORD") %></td>
+	<td>암호</td><td><%= result.getString("PASSWORD") %></td>
 </tr>
 <tr>
-	<td>이름</td><td><%= rs.getString("NAME") %></td>
+	<td>이름</td><td><%= result.getString("NAME") %></td>
 </tr>
 <tr>
-	<td>이메일</td><td><%= rs.getString("EMAIL") %></td>
+	<td>이메일</td><td><%= result.getString("EMAIL") %></td>
 </tr>
 </table>
 <%
@@ -59,8 +58,8 @@
 에러 발생: <%= ex.getMessage() %>
 <%
 	} finally {
-		if (rs != null) try { rs.close(); } catch(SQLException ex) {}
-		if (stmt != null) try { stmt.close(); } catch(SQLException ex) {}
+		if (result != null) try { result.close(); } catch(SQLException ex) {}
+		if (state != null) try { state.close(); } catch(SQLException ex) {}
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	}
 %>

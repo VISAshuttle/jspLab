@@ -27,8 +27,7 @@
 							"useUnicode=true&characterEncoding=utf8";
 		String dbUser = "jspexam";
 		String dbPass = "jsppw";
-		String query =  "select * from MEMBER_HISTORY "+
-						"where MEMBERID = '"+memberID+"'";
+		String query = "select * from MEMBER_HISTORY where MEMBERID = '" + memberID + "'";
 		
 		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 		stmt = conn.createStatement();
