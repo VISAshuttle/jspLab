@@ -41,11 +41,9 @@ public class DBCPInit extends HttpServlet {
 			String username = "jspexam";
 			String pw = "jsppw";
 
-			ConnectionFactory connFactory = 
-					new DriverManagerConnectionFactory(jdbcUrl, username, pw);
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
 
-			PoolableConnectionFactory poolableConnFactory = 
-					new PoolableConnectionFactory(connFactory, null);
+			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			poolableConnFactory.setValidationQuery("select 1");
 
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();

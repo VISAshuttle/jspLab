@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
-import guestbook.dao.MessageDao;
+import guestbook.dao.MessageDAO;
 import guestbook.model.Message;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -27,7 +27,7 @@ public class GetMessageListService {
 		int currentPageNumber = pageNumber;
 		try {
 			conn = ConnectionProvider.getConnection();
-			MessageDao messageDao = MessageDao.getInstance();
+			MessageDAO messageDao = MessageDAO.getInstance();
 
 			int messageTotalCount = messageDao.selectCount(conn);
 

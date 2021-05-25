@@ -12,13 +12,13 @@ import java.util.List;
 import guestbook.model.Message;
 import jdbc.JdbcUtil;
 
-public class MessageDao {
-	private static MessageDao messageDao = new MessageDao();
-	public static MessageDao getInstance() {
+public class MessageDAO {
+	private static MessageDAO messageDao = new MessageDAO();
+	public static MessageDAO getInstance() {
 		return messageDao;
 	}
 	
-	private MessageDao() {}
+	private MessageDAO() {}
 	
 	public int insert(Connection conn, Message message) throws SQLException {
 		PreparedStatement pstmt = null;

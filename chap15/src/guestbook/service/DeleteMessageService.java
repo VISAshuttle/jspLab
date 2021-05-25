@@ -3,7 +3,7 @@ package guestbook.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import guestbook.dao.MessageDao;
+import guestbook.dao.MessageDAO;
 import guestbook.model.Message;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -25,7 +25,7 @@ public class DeleteMessageService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 
-			MessageDao messageDao = MessageDao.getInstance();
+			MessageDAO messageDao = MessageDAO.getInstance();
 			Message message = messageDao.select(conn, messageId);
 			if (message == null) {
 				throw new MessageNotFoundException("메시지 없음");

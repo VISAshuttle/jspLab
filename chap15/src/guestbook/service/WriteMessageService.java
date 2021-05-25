@@ -3,7 +3,7 @@ package guestbook.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import guestbook.dao.MessageDao;
+import guestbook.dao.MessageDAO;
 import guestbook.model.Message;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -22,7 +22,7 @@ public class WriteMessageService {
 		Connection conn = null;
 		try {
 			conn = ConnectionProvider.getConnection();
-			MessageDao messageDao = MessageDao.getInstance();
+			MessageDAO messageDao = MessageDAO.getInstance();
 			messageDao.insert(conn, message);
 		} catch (SQLException e) {
 			throw new ServiceException(
