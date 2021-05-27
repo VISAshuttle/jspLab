@@ -60,13 +60,12 @@ public class ControllerUsingURI extends HttpServlet {
     private void process(HttpServletRequest request,
     HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getRequestURI();
-		if (command.indexOf(request.getContextPath()) == 0) {
-			command = command.substring(request.getContextPath().length());
-		}
+		String contextPath = request.getContextPath();
+		if (command.startsWith(contextPath)) 	command = command.substring(contextPath.length());
+		
         CommandHandler handler = commandHandlerMap.get(command);
-        if (handler == null) {
-            handler = new NullHandler();
-        }
+        if (handler == null)	handler = new NullHandler();
+
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);

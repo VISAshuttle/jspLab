@@ -20,8 +20,7 @@ public class DBCPInitListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		String poolConfig = 
-				sce.getServletContext().getInitParameter("poolConfig");
+		String poolConfig = sce.getServletContext().getInitParameter("poolConfig");
 		Properties prop = new Properties();
 		try {
 			prop.load(new StringReader(poolConfig));
@@ -36,8 +35,8 @@ public class DBCPInitListener implements ServletContextListener {
 		String driverClass = prop.getProperty("jdbcdriver");
 		try {
 			Class.forName(driverClass);
-		} catch (ClassNotFoundException ex) {
-			throw new RuntimeException("fail to load JDBC Driver", ex);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("fail to load JDBC Driver", e);
 		}
 	}
 
@@ -47,11 +46,9 @@ public class DBCPInitListener implements ServletContextListener {
 			String username = prop.getProperty("dbUser");
 			String pw = prop.getProperty("dbPass");
 
-			ConnectionFactory connFactory = 
-					new DriverManagerConnectionFactory(jdbcUrl, username, pw);
+			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
 
-			PoolableConnectionFactory poolableConnFactory = 
-					new PoolableConnectionFactory(connFactory, null);
+			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			poolableConnFactory.setValidationQuery("select 1");
 
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
@@ -60,13 +57,12 @@ public class DBCPInitListener implements ServletContextListener {
 			poolConfig.setMinIdle(5);
 			poolConfig.setMaxTotal(50);
 
-			GenericObjectPool<PoolableConnection> connectionPool = 
-					new GenericObjectPool<>(poolableConnFactory, poolConfig);
+			GenericObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(poolableConnFactory,
+					poolConfig);
 			poolableConnFactory.setPool(connectionPool);
-			
+
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
-			PoolingDriver driver = (PoolingDriver)
-				DriverManager.getDriver("jdbc:apache:commons:dbcp:");
+			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
 			String poolName = prop.getProperty("poolName");
 			driver.registerPool(poolName, connectionPool);
 		} catch (Exception e) {
