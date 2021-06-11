@@ -26,15 +26,15 @@
 		
 		Enumeration files=multi.getFileNames();
 		
-//	    String file1 = "fileName1";
-		String file1 =(String)files.nextElement();
-		filename1=multi.getFilesystemName(file1);
-		origfilename1= multi.getOriginalFileName(file1);
-
-// 	    String file2 = "fileName2";		
+		//String file2 = "fileName2";		
 		String file2 =(String)files.nextElement();
 		filename2=multi.getFilesystemName(file2);
 		origfilename2=multi.getOriginalFileName(file2);
+				
+		//String file1 = "fileName1";
+		String file1 =(String)files.nextElement();
+		filename1=multi.getFilesystemName(file1);
+		origfilename1= multi.getOriginalFileName(file1);
 		
 	}catch(Exception e){
 		e.printStackTrace();

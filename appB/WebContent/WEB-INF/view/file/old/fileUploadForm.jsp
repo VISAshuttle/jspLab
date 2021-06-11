@@ -5,7 +5,7 @@
 </head>
 <body>
 <center>
-<form action="fileUpload.jsp" method="post" enctype="multipart/form-data">
+<form action="file.do" method="post" enctype="multipart/form-data">
 <table border=1>
 	<tr>
 		<td colspan=2 align=center><h3>파일 업로드 폼</h3></td>

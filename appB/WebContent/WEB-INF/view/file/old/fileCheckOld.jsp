@@ -19,7 +19,12 @@
 올린 사람 : <%=name %><br>
 제목 : <%=subject %><br>
 <!-- 파일 명 링크 거는 부분 수정함. -->
-파일명1 : <a href="file_down.jsp?file_name=<%=filename1 %>"><%=origfilename1 %></a><br>
-파일명2 : <a href="file_down.jsp?file_name=<%=filename2 %>"><%=origfilename2 %></a><p>
+파일명1 : <a href="fileDown.jsp?file_name=<%=filename1 %>"><%=origfilename1 %></a><br>
+파일명2 : <a href="fileDown.jsp?file_name=<%=filename2 %>"><%=origfilename2 %></a><br>
+
+<img src="/appB/upload/<%=filename1 %>" /><br>
+<img src="/appB/upload/<%=filename2 %>" /><br>
+
+
 </body>
 </html>
